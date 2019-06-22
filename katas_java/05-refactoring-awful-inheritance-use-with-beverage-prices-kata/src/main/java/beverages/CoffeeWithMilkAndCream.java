@@ -1,8 +1,10 @@
 package beverages;
 
 public class CoffeeWithMilkAndCream extends Coffee {
-    @Override
+    private static final double INCREMENT = 0.25;
+
+	@Override
     public double price() {
-        return super.price() +  0.25;
+        return super.price() +  INCREMENT;
     }
 }

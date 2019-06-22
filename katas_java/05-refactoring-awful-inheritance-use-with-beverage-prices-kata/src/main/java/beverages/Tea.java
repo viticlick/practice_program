@@ -1,8 +1,10 @@
 package beverages;
 
 public class Tea implements Beverage {
-    @Override
+    private static final double PRICE = 1.5;
+
+	@Override
     public double price() {
-        return 1.5;
+        return PRICE;
     }
 }

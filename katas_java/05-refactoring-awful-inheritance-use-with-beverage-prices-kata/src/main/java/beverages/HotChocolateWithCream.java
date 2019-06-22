@@ -1,8 +1,10 @@
 package beverages;
 
 public class HotChocolateWithCream extends HotChocolate {
-    @Override
+    private static final double PRICE = 1.45 + 0.15;
+
+	@Override
     public double price() {
-        return 1.45 + 0.15;
+        return PRICE;
     }
 }
