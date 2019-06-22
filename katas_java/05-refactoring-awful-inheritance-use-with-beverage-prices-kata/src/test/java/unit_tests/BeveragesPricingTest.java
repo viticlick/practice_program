@@ -9,22 +9,20 @@ import org.junit.Test;
 import beverages.Beverage;
 import beverages.BeverageMachine;
 import beverages.Cinnamon;
-import beverages.Coffee;
 import beverages.Cream;
 import beverages.HotChocolate;
-import beverages.Milk;
 import beverages.Tea;
 
 public class BeveragesPricingTest {
 	@Test
 	public void computes_coffee_price() {
-		Beverage coffee = new Coffee();
+		Beverage coffee = BeverageMachine.coffe().serve();
 		assertThat(coffee.price(), is(closeTo(1.20, 0.001)));
 	}
 
 	@Test
 	public void computes_coffee_and_cinnamon_price() {
-		Beverage beverage = new Cinnamon(new Coffee());
+		Beverage beverage = BeverageMachine.coffe().withCinnamon().serve();
 		assertThat(beverage.price(), is(closeTo(1.25, 0.001)));
 	}
 
@@ -66,25 +64,25 @@ public class BeveragesPricingTest {
 
 	@Test
 	public void computes_coffee_with_milk_price() {
-		Beverage coffeeWithMilk = new Milk(new Coffee());
+		Beverage coffeeWithMilk = BeverageMachine.coffe().withMilk().serve();
 		assertThat(coffeeWithMilk.price(), is(closeTo(1.30, 0.001)));
 	}
 
 	@Test
 	public void computes_coffee_with_milk_and_cinnamon_price() {
-		Beverage beverage = new Cinnamon(new Milk(new Coffee()));
+		Beverage beverage = BeverageMachine.coffe().withMilk().withCinnamon().serve();
 		assertThat(beverage.price(), is(closeTo(1.35, 0.001)));
 	}
 
 	@Test
 	public void computes_coffee_with_milk_and_cream_price() {
-		Beverage coffeeWithMilkAndCream = new Cream(new Milk(new Coffee()));
+		Beverage coffeeWithMilkAndCream = BeverageMachine.coffe().withMilk().withCream().serve();
 		assertThat(coffeeWithMilkAndCream.price(), is(closeTo(1.45, 0.001)));
 	}
 
 	@Test
 	public void computes_coffee_with_milk_and_cream_and_cinnamon_price() {
-		Beverage beverage = new Cinnamon(new Cream(new Milk(new Coffee())));
+		Beverage beverage = BeverageMachine.coffe().withMilk().withCream().withCinnamon().serve();
 		assertThat(beverage.price(), is(closeTo(1.50, 0.001)));
 	}
 

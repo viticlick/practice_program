@@ -6,4 +6,8 @@ public class BeverageMachine {
 		return new TeaMaker();
 	}
 
+	public static CoffeMaker coffe() {
+		return new CoffeMaker();
+	}
+
 }
