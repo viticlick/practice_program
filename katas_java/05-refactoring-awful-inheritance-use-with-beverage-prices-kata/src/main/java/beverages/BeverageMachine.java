@@ -10,4 +10,8 @@ public class BeverageMachine {
 		return new CoffeMaker();
 	}
 
+	public static HotChocolateMaker hotChocolate() {
+		return new HotChocolateMaker();
+	}
+
 }

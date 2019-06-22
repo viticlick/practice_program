@@ -8,10 +8,6 @@ import org.junit.Test;
 
 import beverages.Beverage;
 import beverages.BeverageMachine;
-import beverages.Cinnamon;
-import beverages.Cream;
-import beverages.HotChocolate;
-import beverages.Tea;
 
 public class BeveragesPricingTest {
 	@Test
@@ -28,25 +24,25 @@ public class BeveragesPricingTest {
 
 	@Test
 	public void computes_tea_price() {
-		Beverage tea = new Tea();
+		Beverage tea = BeverageMachine.tea().serve();
 		assertThat(tea.price(), is(closeTo(1.50, 0.001)));
 	}
 
 	@Test
 	public void computes_tea_and_cinnamon_price() {
-		Beverage beverage = new Cinnamon(new Tea());
+		Beverage beverage = BeverageMachine.tea().withCinnamon().serve();
 		assertThat(beverage.price(), is(closeTo(1.55, 0.001)));
 	}
 
 	@Test
 	public void computes_hot_chocolate_price() {
-		Beverage hotChocolate = new HotChocolate();
+		Beverage hotChocolate = BeverageMachine.hotChocolate().serve();
 		assertThat(hotChocolate.price(), is(closeTo(1.45, 0.001)));
 	}
 
 	@Test
 	public void computes_hot_chocolate_and_cinnamon_price() {
-		Beverage beverage = new Cinnamon(new HotChocolate());
+		Beverage beverage = BeverageMachine.hotChocolate().withCinnamon().serve();
 		assertThat(beverage.price(), is(closeTo(1.50, 0.001)));
 	}
 
@@ -88,13 +84,13 @@ public class BeveragesPricingTest {
 
 	@Test
 	public void computes_hot_chocolate_with_cream_price() {
-		Beverage hotChocolateWithCream = new Cream(new HotChocolate());
+		Beverage hotChocolateWithCream = BeverageMachine.hotChocolate().withCream().serve();
 		assertThat(hotChocolateWithCream.price(), is(closeTo(1.60, 0.001)));
 	}
 
 	@Test
 	public void computes_hot_chocolate_with_cream_and_cinnamon_price() {
-		Beverage beverage = new Cinnamon(new Cream(new HotChocolate()));
+		Beverage beverage = BeverageMachine.hotChocolate().withCream().withCinnamon().serve();
 		assertThat(beverage.price(), is(closeTo(1.65, 0.001)));
 	}
 }
